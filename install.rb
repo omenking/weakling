@@ -19,7 +19,7 @@ end
 
 if File.exists?("#{RAILS_ROOT}/vendor/sprockets")
   unless File.exists?("#{RAILS_ROOT}/vendor/sprockets/weakling/src/weakling.js")
-    FileUtils.cp File.join(File.dirname(__FILE__), "public/javascripts/weakling.js"), "#{RAILS_ROOT}/vendor/sprockets/weakling/src"
+    FileUtils.cp File.join(File.dirname(__FILE__), "public/javascripts/weakling.js"), "#{RAILS_ROOT}/vendor/sprockets/weakling/src/"
     p "."
   end
 end
