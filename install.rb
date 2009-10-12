@@ -1,27 +1,20 @@
-p "Copying files..."
+require "fileutils"
+include FileUtils::Verbose
 
-unless File.exists?("#{RAILS_ROOT}/public/stylesheets/weakling.css")
-  FileUtils.cp File.join(File.dirname(__FILE__), "public/stylesheets/weakling.css"), "#{RAILS_ROOT}/public/stylesheets/" unless File.exists?("#{RAILS_ROOT}/public/stylesheets/weakling.css")
-  p "."
-end  
+RAILS_ROOT = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "..")) unless defined?(RAILS_ROOT)
 
-unless File.exists?("#{RAILS_ROOT}/public/javascripts/weakling.js")
-  FileUtils.cp File.join(File.dirname(__FILE__), "public/javascripts/weakling.js"), "#{RAILS_ROOT}/public/javascripts/" 
-  p "."
-end  
+cp      File.join(File.dirname(__FILE__), "public", "stylesheets", "weakling.css"), 
+        File.join(RAILS_ROOT, "public", "stylesheets")
+cp      File.join(File.dirname(__FILE__), "public", "javascripts", "weakling.js"), 
+        File.join(RAILS_ROOT, "public", "javascripts")
 
-if File.exists?("#{RAILS_ROOT}/public/stylesheets/sass")
-  unless File.exists?("#{RAILS_ROOT}/public/stylesheets/sass/weakling.sass")
-    FileUtils.cp File.join(File.dirname(__FILE__), "public/stylesheets/weakling.sass"), "#{RAILS_ROOT}/public/stylesheets/sass/"
-    p "."
-  end
+if File.exists?(RAILS_ROOT, "public", "stylesheets", "sass")
+  cp      File.join(File.dirname(__FILE__), "public", "stylesheets", "sass", "weakling.sass"), 
+          File.join(RAILS_ROOT, "public", "stylesheets", "sass")
 end
 
-if File.exists?("#{RAILS_ROOT}/vendor/sprockets")
-  unless File.exists?("#{RAILS_ROOT}/vendor/sprockets/weakling/src/weakling.js")
-    FileUtils.cp File.join(File.dirname(__FILE__), "public/javascripts/weakling.js"), "#{RAILS_ROOT}/vendor/sprockets/weakling/src/"
-    p "."
-  end
+if File.exists?(RAILS_ROOT, "vendor", "sprockets")
+  mkdir_p File.join(RAILS_ROOT, "vendor", "sprockets","weakling", "src")
+  cp      File.join(File.dirname(__FILE__), "public", "javascripts", "weakling.js"), 
+          File.join(RAILS_ROOT, "vendor", "sprockets","weakling", "src")
 end
-
-p "done!"
