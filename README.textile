@@ -54,4 +54,12 @@ h2. Sass and Sprockets
 If you have Sass or Sprockets installed it'll copy them to their respected default directories.
 "Sass":http://sass-lang.com/ and "Sprockets":http://getsprockets.org/ rule!
 
+Remember to add to your app/javascripts
+
+//= require <weakling>
+
+Remember to add to your application.sass
+
+@import weakling.sass
+
 Copyright (c) 2009 Andrew Brown, released under the MIT license
