@@ -15,7 +15,7 @@ h3. Download Plugin
 
 ./script/plugin install git://github.com/omenking/weakling.git
 
-.h3 Add Locales
+h3. Add Locales
 
 Then add this to your config/locales/en.yml
 
